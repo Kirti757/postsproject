@@ -1,0 +1,104 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212; /* Dark mode */
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    color: #f1f1f1;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation */
+nav {
+    background-color: #1e90ff; /* Dodger Blue */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffdd57; /* Yellow on hover */
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Headings */
+h1, h2 {
+    color: #ffdd57; /* Accent yellow */
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid #ffdd57;
+    padding-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+/* Posts Section */
+section {
+    margin-top: 2rem;
+}
+
+.post {
+    background: #1e1e1e;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #1e90ff;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.post:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+.post p {
+    margin: 0.5rem 0;
+    color: #ddd;
+}
+
+/* Links inside content */
+main a {
+    color: #1e90ff;
+    text-decoration: underline;
+}
+
+main a:hover {
+    color: #ffdd57;
+}
+
+
+.banner{
+    display:block;
+    width:100%;
+    max-width:800px;
+}

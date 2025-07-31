@@ -1,0 +1,23 @@
+{% extends 'djangoappone/layout.html' %}
+{% load static %}
+
+{% block title %}  {{ post.title }} {% endblock title %}
+
+{% block content %}
+
+
+    <section>
+        <h1>{{post.title }}</h1>
+        <p>{{post.body}}</p>
+        <p>{{post.date}}</p>
+    
+        <img class="banner" src="{{ post.banner.url }}" alt="{{ post.title }}">
+
+    </section>
+
+
+
+{% endblock content %}
+
+
+  
