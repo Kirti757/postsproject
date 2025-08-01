@@ -1,14 +1,14 @@
 {% extends 'djangoappone/layout.html' %}
 
-{% block title %} Register a New User {% endblock title %}
+{% block title %}User Login {% endblock title %}
 
 {% block content %}
 
 
 
 
-    <h1>Register a New User</h1>
-    <form class="form-with-validation" action="{% url 'usersignin:register' %}" method="post">
+    <h1>User Login</h1>
+    <form class="form-with-validation" action="{% url 'usersignin:login' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit">Submit</button>

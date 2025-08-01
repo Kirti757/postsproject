@@ -16,13 +16,22 @@
 <body>
     <nav>
         <a href="/">
-            <span role="img" aira-label="Home"> 🏠</span>
+            <span role="img" aira-label="Home" title="Home"> 🏠</span>
         </a> |
         <a href="/about">
             <span role="img" aira-label="About"> ⏺️</span>
         </a> |
         <a href="{% url 'post:posts_list' %}">
             <span role="img" aira-label="Posts"> 📰</span>
+        </a> |
+        <a href="{% url 'usersignin:register' %}">
+            <span role="img" aira-label="User Registration">✅</span>
+        </a> |
+        <a href="{% url 'usersignin:login' %}">
+            <span role="img" aira-label="User Login">❇️</span>
+        </a> |
+         <a href="{% url 'usersignin:logout' %}">
+            <span role="img" aira-label="User Logout">🔒 </span>
         </a> |
     </nav>
 

@@ -21,9 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('djangoappone.urls')),
+    path("users/", include("usersignin.urls")), 
     path('about/',include('djangoappone.urls')),
-    path('posts/',include('post.urls')),
-    path('users/',include('usersignin.urls')),
+    path('posts/',include('post.urls',namespace="post")),
+    path('',include('djangoappone.urls')),
+    
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
