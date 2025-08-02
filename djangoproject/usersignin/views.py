@@ -21,7 +21,10 @@ def login_view(request):
         form=AuthenticationForm(data=request.POST)
         if form.is_valid():
             login(request,form.get_user())
-            return redirect("post:posts_list")
+            if "next" in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect("post:posts_list")
 
     else:
         form=AuthenticationForm()
@@ -31,4 +34,4 @@ def logout_view(request):
     if request.method=="POST":
         logout(request)
         return redirect("post:posts_list")
-    return render(request,'usersignin/logout.html',{"form":form})
+    return render(request,'usersignin/login.html')

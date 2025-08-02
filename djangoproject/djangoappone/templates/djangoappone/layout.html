@@ -24,15 +24,24 @@
         <a href="{% url 'post:posts_list' %}">
             <span role="img" aira-label="Posts"> 📰</span>
         </a> |
-        <a href="{% url 'usersignin:register' %}">
-            <span role="img" aira-label="User Registration">✅</span>
-        </a> |
-        <a href="{% url 'usersignin:login' %}">
-            <span role="img" aira-label="User Login">❇️</span>
-        </a> |
-         <a href="{% url 'usersignin:logout' %}">
-            <span role="img" aira-label="User Logout">🔒 </span>
-        </a> |
+    
+        {% if user.is_authenticated %}
+            <a href="{% url 'post:post_new' %}">
+                <span role="img" aira-label="New Post">➕</span>
+            </a> |
+            <form action="{% url 'usersignin:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-button" aria-label="User Logout" title="User Logout">🔒</button>
+            </form>|
+        {% else %}
+            <a href="{% url 'usersignin:register' %}">
+                 <span role="img" aira-label="User Registration">✅</span>
+            </a> |
+            <a href="{% url 'usersignin:login' %}">
+                 <span role="img" aira-label="User Login">❇️</span>
+            </a> |
+        {% endif %}
+
     </nav>
 
     <main>

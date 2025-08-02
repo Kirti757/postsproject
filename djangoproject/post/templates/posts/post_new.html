@@ -1,0 +1,27 @@
+{% extends 'djangoappone/layout.html' %}
+{% load static %}
+
+{% block title %} New Post{% endblock title %}
+
+{% block content %}
+
+
+    
+<section>
+    <h1>New Post</h1>
+    <form class="form-with-validation" action="{% url 'post:post_new' %}" 
+        method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form}}
+        <button class="form-submit">Add Post</button>
+    </form>
+
+</section>
+
+
+
+
+{% endblock content %}
+
+
+  

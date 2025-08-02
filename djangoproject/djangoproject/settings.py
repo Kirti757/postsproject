@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+
+import os ################remove import os if when your are deploying
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2rfe1jnq%cg2lll^uanj&aib(+#*q(-cgl!n+)1pm0=&q@e5wl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True ########### make it False while deploying
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] ############ ALLOWED_HOSTS = ["localhost",127.0.0.1] 
 
 
 # Application definition
@@ -118,12 +122,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+MEDIA_URL = '/media/'
+
+# STATIC_ROOT=BASE_DIR / 'assets'
+# MEDIA_ROOT=BASE_DIR / 'media'
+# STATICFILES_DIRS=[BASE_DIR/'static']
+
+# (after this all changes run below command in terminal )
+# py manage.py collectstaic 
+# By executing above command in main folder(djangoproject) assests(in that we will also have admin folder) folder will be created
+#this assests folder will grab admin,css,js folder 
+
+
+#after this changes :
+#go to djangoproject folder----->urls.py 
+#and do changes there
+
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')] #remove this line and uncomment above 3 lines (127,128,129)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #remove this line and uncomment above 3 lines(127,128,129) 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
