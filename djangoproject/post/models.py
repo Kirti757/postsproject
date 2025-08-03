@@ -10,7 +10,7 @@ class Post(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     banner=models.ImageField(default='fallback.png',blank=True) # if no image provided it is ok it dont give error
     author=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
-    likes=models.ManyToManyField(User,related_name="liked_posts",blank=True)
+    likes = models.ManyToManyField(User, related_name="liked_posts", blank=True)
 
     def save(self,*args,**kwargs):
         if not self.slug:

@@ -15,6 +15,12 @@
                 <a href="{% url 'post:posts_page' slug=post.slug  %} ">
                     {{ post.title }}
                 </a>
+                {% if user.is_authenticated %}
+                  <form action="{% url 'post:toggle_like' slug=post.slug %}" method="post" style="display:inline;">
+                   {% csrf_token %}
+                    <button type="submit">❤️</button>
+                </form>
+                {% endif %}
             </h2>
             <p>{{post.body}} </p>
             <p>{{post.date}} by {{post.author}}</p>
