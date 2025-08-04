@@ -65,16 +65,22 @@ h2 {
 /* Posts Section */
 section {
     margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;  /* spacing between posts */
+    justify-content: flex-start; /* or center */
 }
 
 .post {
     background: #1e1e1e;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
     border-left: 4px solid #1e90ff;
     border-radius: 8px;
     transition: transform 0.2s ease, background 0.3s ease;
+    flex: 1 1 280px;   /* allow responsive resizing */
+    max-width: 300px;  /* keeps each post box width */
 }
+
 
 .post:hover {
     background: #2a2a2a;
@@ -99,6 +105,18 @@ main a:hover {
 
 .banner{
     display:block;
-    width:100%;
+    width:50%;
     max-width:800px;
+}
+.heart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+.heart-btn .liked {
+    color: red;
+}
+.heart-btn .not-liked {
+    color: white;
 }

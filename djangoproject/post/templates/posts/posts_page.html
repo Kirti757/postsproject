@@ -1,39 +1,39 @@
 {% extends 'djangoappone/layout.html' %}
 {% load static %}
 
-{% block title %}  {{ post.title }} {% endblock title %}
+{% block title %} {{ post.title }} {% endblock title %}
 
 {% block content %}
 
-
-    <section>
-        <h1>{{post.title }}</h1>
-        <p>{{post.body}}</p>
-        <p>{{post.date}}</p>
-    
-        <img class="banner" src="{{ post.banner.url }}" alt="{{ post.title }}">
+<section>
+    <!-- Title and Likes Row -->
+    <div style="display:flex; align-items:center; gap:10px;">
+        <h1 style="margin:0;">{{ post.title }}</h1>
         
-        <p>
-        ❤️ {{ post.total_likes }} Likes
         {% if user.is_authenticated %}
-            <form action="{% url 'post:toggle_like' slug=post.slug %}" method="post">
+            <form action="{% url 'post:toggle_like' slug=post.slug %}" 
+                  method="post" style="margin:0; display:inline;">
                 {% csrf_token %}
-                <button type="submit">
+                <button type="submit" 
+                        style="background:none; border:none; cursor:pointer; line-height:1; padding:0; margin:0;">
                     {% if user in post.likes.all %}
-                        Unlike
+                        <!-- Liked: red heart -->
+                        <span style="color:red; font-size:24px;">&#10084;</span>
                     {% else %}
-                        Like
+                        <!-- Not liked: outline heart -->
+                        <span style="color:white; font-size:27px;">&#9825;</span>
                     {% endif %}
                 </button>
             </form>
         {% endif %}
-        </p>
+        <span style="font-size:16px; color:white;">{{ post.total_likes }}</span>
+    </div>
 
-    </section>
+    <!-- Post body -->
+    <p>{{ post.body }}</p>
+    <p>{{ post.date }}</p>
 
-
+    <img class="banner" src="{{ post.banner.url }}" alt="{{ post.title }}">
+</section>
 
 {% endblock content %}
-
-
-  

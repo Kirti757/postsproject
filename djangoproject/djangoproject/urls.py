@@ -27,8 +27,8 @@ from django.conf import settings #replace this line by above comment (while depl
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path("usersignin/", include("usersignin.urls")), 
+    path('admin/', admin.site.urls),
     path('about/',include('djangoappone.urls')),
     path('posts/',include('post.urls',namespace="post")),
     path('',include('djangoappone.urls')),
