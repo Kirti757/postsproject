@@ -45,6 +45,14 @@
     </nav>
 
     <main>
+          <!-- ✅ Messages Section -->
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li class="alert">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         {% block content %}
         {% endblock content %}
     </main>

@@ -9,7 +9,7 @@
     <!-- Title and Likes Row -->
     <div style="display:flex; align-items:center; gap:10px;">
         <h1 style="margin:0;">{{ post.title }}</h1>
-        
+        <span style="font-size:22px; color:white;">🔁</span>
         {% if user.is_authenticated %}
             <form action="{% url 'post:toggle_like' slug=post.slug %}" 
                   method="post" style="margin:0; display:inline;">
@@ -27,6 +27,7 @@
             </form>
         {% endif %}
         <span style="font-size:16px; color:white;">{{ post.total_likes }}</span>
+        
     </div>
 
     <!-- Post body -->

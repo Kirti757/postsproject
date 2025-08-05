@@ -63,29 +63,39 @@ h2 {
 }
 
 /* Posts Section */
+/* Posts Section */
 section {
     margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
     gap: 1.5rem;  /* spacing between posts */
-    justify-content: flex-start; /* or center */
 }
 
 .post {
     background: #1e1e1e;
-    padding: 1.5rem;
+    padding: 1rem;
     border-left: 4px solid #1e90ff;
     border-radius: 8px;
     transition: transform 0.2s ease, background 0.3s ease;
-    flex: 1 1 280px;   /* allow responsive resizing */
-    max-width: 300px;  /* keeps each post box width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-
 
 .post:hover {
     background: #2a2a2a;
     transform: translateY(-3px);
 }
+
+.banner {
+    width: 100%;       /* Make image fit inside post */
+    height: 180px;     /* Fixed height for equal grid */
+    object-fit: cover; /* Prevents distortion */
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
 
 .post p {
     margin: 0.5rem 0;
@@ -103,11 +113,6 @@ main a:hover {
 }
 
 
-.banner{
-    display:block;
-    width:50%;
-    max-width:800px;
-}
 .heart-btn {
     background: none;
     border: none;
@@ -119,4 +124,16 @@ main a:hover {
 }
 .heart-btn .not-liked {
     color: white;
+}
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+.messages .alert {
+    background: #4CAF50; /* green for success */
+    color: white;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
 }

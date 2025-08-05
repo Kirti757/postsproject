@@ -1,7 +1,8 @@
-# usersignin/urls.py
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import CustomPasswordResetCompleteView
+from django.urls import reverse_lazy
 
 app_name = "usersignin"
 
@@ -16,7 +17,7 @@ urlpatterns = [
         auth_views.PasswordResetView.as_view(
             template_name="usersignin/password_reset.html",
             email_template_name="usersignin/password_reset_email.html",
-            success_url="/usersignin/password_reset_done/"   # 👈 redirect works
+            success_url=reverse_lazy("usersignin:password_reset_done"),   # ✅ FIX
         ),
         name="password_reset"
     ),
@@ -28,18 +29,16 @@ urlpatterns = [
         name="password_reset_done"
     ),
     path(
-        "reset/<uidb64>/<token>/",    # 👈 MUST include <uidb64> and <token>
+        "reset/<uidb64>/<token>/",
         auth_views.PasswordResetConfirmView.as_view(
             template_name="usersignin/password_reset_confirm.html",
-            success_url="/usersignin/reset/done/"
+            success_url=reverse_lazy("usersignin:password_reset_complete"),  # ✅ FIX
         ),
         name="password_reset_confirm"
     ),
     path(
         "reset/done/",
-        auth_views.PasswordResetCompleteView.as_view(
-            template_name="usersignin/password_reset_complete.html"
-        ),
+        CustomPasswordResetCompleteView.as_view(),
         name="password_reset_complete"
     ),
 ]

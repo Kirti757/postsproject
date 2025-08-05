@@ -11,9 +11,13 @@
     {% for post in posts %}
         <article class="post">
             <h2>
-                <a href="{% url 'post:posts_page' slug=post.slug %}">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'post:posts_page' slug=post.slug %}">
+                        {{ post.title }}
+                    </a>
+                {% else %}
                     {{ post.title }}
-                </a>
+                {% endif %}
             </h2>
             <img class="banner" src="{{ post.banner.url }}" alt="{{ post.title }}">
             <p>{{ post.body }}</p>
